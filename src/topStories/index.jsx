@@ -4,7 +4,7 @@ import { Header } from "../header";
 import { getStoriesEpic } from "./action";
 import topStories from "./reducer";
 
-class Index extends React.Component {
+class TopStories extends React.Component {
   state = { page: 0 };
 
   componentDidMount() {
@@ -23,4 +23,4 @@ class Index extends React.Component {
   }
 }
 
-export default connect(() => topStories)(Index);
+export default connect(() => topStories)(TopStories);
