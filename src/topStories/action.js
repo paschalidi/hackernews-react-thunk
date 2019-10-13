@@ -11,8 +11,11 @@ export const getStoriesEpic = page => {
     try {
       const response = await fetch(`${API_URL}/v0/topstories.json`);
       const topIds = await response.json();
+      
+      const sliceFrom = STORIES_ON_EACH_PAGE * page;
+      const sliceTo = STORIES_ON_EACH_PAGE * page + STORIES_ON_EACH_PAGE;
 
-      topIds.slice(page, page + STORIES_ON_EACH_PAGE).map(async id => {
+      topIds.slice(sliceFrom, sliceTo).map(async id => {
         const topStoriesResponse = await fetch(`${API_URL}/v0/item/${id}.json`);
 
         const story = await topStoriesResponse.json();

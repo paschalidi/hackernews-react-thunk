@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
-import topStories from "../topStories/reducer";
+import topStoriesState from "../topStories/reducer";
+import pageState from "../pagination/reducer";
 
-export const rootReducer = combineReducers({ topStories });
+export const rootReducer = combineReducers({ topStoriesState, pageState });

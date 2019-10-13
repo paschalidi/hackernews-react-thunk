@@ -6,10 +6,7 @@ const initialState = {
   isError: false
 };
 
-const asyncReducer = (
-  state = initialState,
-  { type = null, data = null, error = null }
-) => {
+const reducer = (state = initialState, { type = null, data = null }) => {
   switch (type) {
     case FETCH_STORY:
       return { topStories: [...state.topStories, data] };
@@ -20,4 +17,4 @@ const asyncReducer = (
   }
 };
 
-export default asyncReducer;
+export default reducer;

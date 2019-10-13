@@ -1,26 +1,40 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Header } from "../header";
 import { getStoriesEpic } from "./action";
-import topStories from "./reducer";
 
 class TopStories extends React.Component {
-  state = { page: 0 };
-
   componentDidMount() {
-    const { dispatch } = this.props;
-    const { page } = this.state;
+    const { dispatch, page } = this.props;
     dispatch(getStoriesEpic(page));
   }
 
+  componentDidUpdate(prevProps) {
+    const { dispatch, page } = this.props;
+
+    if (page !== prevProps.page) {
+      console.log(page)
+      dispatch(getStoriesEpic(page));
+    }
+  }
+
   render() {
+    const { topStories } = this.props;
     console.log(this.props);
     return (
-      <React.Fragment>
-        <Header />
-      </React.Fragment>
+      <ul>
+        {topStories &&
+          topStories.map(({ url, title, by, id }) => (
+            <li key={id}>
+              <a href={url}>{title}</a>
+              <div>by: {by}</div>
+            </li>
+          ))}
+      </ul>
     );
   }
 }
 
-export default connect(() => topStories)(TopStories);
+export default connect(({ topStoriesState, pageState }) => ({
+  ...topStoriesState,
+  ...pageState
+}))(TopStories);
