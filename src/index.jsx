@@ -4,10 +4,10 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import store from "./infra/store";
 import { Header } from "./header";
-import TopStories from "./topStories";
-import { AskStories } from "./askStories";
-import { ShowStories } from "./showStories";
-import { JobsStories } from "./jobsStories";
+import TopStories from "./stories/Top";
+import { AskStories } from "./stories/Ask";
+import ShowStories from "./stories/Show";
+import { JobsStories } from "./stories/Jobs";
 import Pagination from "./pagination";
 
 ReactDOM.render(
