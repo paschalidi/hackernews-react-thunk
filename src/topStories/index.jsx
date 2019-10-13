@@ -4,8 +4,10 @@ import { getStoriesEpic } from "./action";
 
 class TopStories extends React.Component {
   componentDidMount() {
-    const { dispatch, page } = this.props;
-    dispatch(getStoriesEpic(page));
+    const { dispatch, page, topStories } = this.props;
+    if (!topStories.length) {
+      dispatch(getStoriesEpic(page));
+    }
   }
 
   componentDidUpdate(prevProps) {

@@ -6,7 +6,7 @@ import { SHOW_MORE_ARTICLES } from "./action";
 const Pagination = ({ dispatch }) => {
   return (
     <button onClick={() => dispatch(action(SHOW_MORE_ARTICLES))}>
-      more articles
+      more stories
     </button>
   );
 };
