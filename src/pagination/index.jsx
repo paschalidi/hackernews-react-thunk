@@ -3,18 +3,12 @@ import { connect } from "react-redux";
 import { action } from "../infra/dispatch";
 import { SHOW_MORE_ARTICLES } from "./action";
 
-const Pagination = ({ page, dispatch }) => {
-  console.log(page);
+const Pagination = ({ dispatch }) => {
   return (
-    <div>
-      <button onClick={() => dispatch(action(SHOW_MORE_ARTICLES))}>
-        more articles
-      </button>
-    </div>
+    <button onClick={() => dispatch(action(SHOW_MORE_ARTICLES))}>
+      more articles
+    </button>
   );
 };
 
-export default connect(({ topStoriesState, pageState }) => ({
-  ...topStoriesState,
-  ...pageState
-}))(Pagination);
+export default connect()(Pagination);

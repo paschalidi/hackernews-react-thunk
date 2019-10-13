@@ -1,1 +1,1 @@
-export const SHOW_MORE_ARTICLES = "NEXT_PAGE";
+export const SHOW_MORE_ARTICLES = "SHOW_MORE_ARTICLES";

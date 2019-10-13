@@ -12,14 +12,12 @@ class TopStories extends React.Component {
     const { dispatch, page } = this.props;
 
     if (page !== prevProps.page) {
-      console.log(page)
       dispatch(getStoriesEpic(page));
     }
   }
 
   render() {
     const { topStories } = this.props;
-    console.log(this.props);
     return (
       <ul>
         {topStories &&
