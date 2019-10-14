@@ -14,6 +14,7 @@ export const getStoriesEpic = (actionType, id, page = 0) => {
     try {
       const response = await fetch(`${API_URL}/v0/${id.toLowerCase()}.json`);
       const storyIdentifiers = await response.json();
+      console.log(storyIdentifiers)
 
       const [sliceFrom, sliceTo] = getPageSlice(page);
 
