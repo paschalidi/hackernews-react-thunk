@@ -1,18 +1,57 @@
-import { FETCH_SHOW_STORY, FETCH_STORY, FETCH_STORY_ERROR } from "./action";
+import {
+  FETCH_SHOW_STORY,
+  FETCH_TOP_STORY,
+  FETCH_STORY_ERROR,
+  FETCH_ASK_STORY,
+  FETCH_JOBS_STORY
+} from "./action";
 
 const initialState = {
-  topStories: [],
-  showStories: [],
+  stories: {
+    showStories: {},
+    topStories: {},
+    askStories: {},
+    jobStories: {}
+  },
   isLoading: true,
   isError: false
 };
 
 const reducer = (state = initialState, { type = null, data = null }) => {
+  console.log(data)
   switch (type) {
-    case FETCH_STORY:
-      return { ...state, topStories: [...state.topStories, data] };
+    case FETCH_TOP_STORY:
+      return {
+        ...state,
+        stories: {
+          ...state.stories,
+          topStories: { ...state.stories.topStories, [data.id]: data }
+        }
+      };
     case FETCH_SHOW_STORY:
-      return { ...state, showStories: [...state.showStories, data] };
+      return {
+        ...state,
+        stories: {
+          ...state.stories,
+          showStories: { ...state.stories.showStories, [data.id]: data }
+        }
+      };
+    case FETCH_ASK_STORY:
+      return {
+        ...state,
+        stories: {
+          ...state.stories,
+          askStories: { ...state.stories.askStories, [data.id]: data }
+        }
+      };
+    case FETCH_JOBS_STORY:
+      return {
+        ...state,
+        stories: {
+          ...state.stories,
+          jobStories: { ...state.stories.jobStories, [data.id]: data }
+        }
+      };
     case FETCH_STORY_ERROR:
       return { isError: true };
     default:

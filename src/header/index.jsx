@@ -34,7 +34,7 @@ export const Header = () => (
     </li>{" "}
     |{" "}
     <li>
-      <Link to="/show">jobs</Link>
+      <Link to="/jobs">jobs</Link>
     </li>
   </List>
 );

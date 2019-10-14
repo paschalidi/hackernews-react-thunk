@@ -4,11 +4,13 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import store from "./infra/store";
 import { Header } from "./header";
-import TopStories from "./stories/Top";
-import { AskStories } from "./stories/Ask";
-import ShowStories from "./stories/Show";
-import { JobsStories } from "./stories/Jobs";
-import Pagination from "./pagination";
+import { Stories } from "./stories";
+import {
+  FETCH_ASK_STORY,
+  FETCH_JOBS_STORY,
+  FETCH_SHOW_STORY,
+  FETCH_TOP_STORY
+} from "./stories/action";
 
 ReactDOM.render(
   <Provider store={store}>
@@ -17,19 +19,34 @@ ReactDOM.render(
         <Header />
         <Switch>
           <Route exact path="/">
-            <TopStories />
+            <Stories
+              key="topStories"
+              actionType={FETCH_TOP_STORY}
+              id="topStories"
+            />
           </Route>
           <Route path="/ask">
-            <AskStories />
+            <Stories
+              key="askStories"
+              actionType={FETCH_ASK_STORY}
+              id="askStories"
+            />
           </Route>
           <Route path="/show">
-            <ShowStories />
+            <Stories
+              key="showStories"
+              actionType={FETCH_SHOW_STORY}
+              id="showStories"
+            />
           </Route>
           <Route path="/jobs">
-            <JobsStories />
+            <Stories
+              key="jobStories"
+              actionType={FETCH_JOBS_STORY}
+              id="jobStories"
+            />
           </Route>
         </Switch>
-        <Pagination />
       </React.Fragment>
     </Router>
   </Provider>,
