@@ -18,7 +18,6 @@ const initialState = {
 };
 
 const reducer = (state = initialState, { type = null, data = null }) => {
-  console.log(data)
   switch (type) {
     case FETCH_TOP_STORY:
       return {
