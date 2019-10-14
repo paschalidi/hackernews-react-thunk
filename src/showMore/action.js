@@ -1,0 +1,2 @@
+export const SHOW_MORE_STORIES = "SHOW_MORE_STORIES";
+export const RESET_PAGES = "RESET_PAGES";
