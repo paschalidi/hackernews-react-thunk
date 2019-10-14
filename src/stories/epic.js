@@ -21,7 +21,6 @@ export const getStoriesEpic = (actionType, id, page = 0) => {
         const storyResponse = await fetch(`${API_URL}/v0/item/${id}.json`);
 
         const story = await storyResponse.json();
-        console.log(story);
         dispatch(action(actionType, story));
       });
     } catch (e) {
